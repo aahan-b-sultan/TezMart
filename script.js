@@ -1,5 +1,85 @@
 document.addEventListener("DOMContentLoaded", () => {
   const productsGrid = document.getElementById("products-grid");
+  
+  // Authentication check and UI population
+  const currentUserStr = sessionStorage.getItem("tezmart_current_user");
+  const topUserMenu = document.getElementById('top-user-menu');
+  const topUserName = document.getElementById('top-user-name');
+  const userNavContainer = document.getElementById('user-nav-container');
+  const topLogoutBtn = document.getElementById('top-logout-btn');
+  const profileAvatar = document.querySelector('.avatar');
+  const profileName = document.querySelector('.user-info h3');
+  const logoutBtn = document.getElementById("logout-btn");
+  const proLink = document.querySelector('.pro-link');
+
+  if (currentUserStr) {
+    const user = JSON.parse(currentUserStr);
+    
+    // Update top nav
+    if (topUserName) {
+      topUserName.innerText = `Hi ${user.name} \u25BC`;
+    }
+    if (topUserMenu) {
+      topUserMenu.href = "#"; // Prevent going to login if logged in
+    }
+    if (userNavContainer) {
+      userNavContainer.classList.add('logged-in');
+    }
+    
+    // Update sidebar profile
+    if (profileAvatar) {
+      profileAvatar.innerText = user.name.charAt(0).toUpperCase();
+      profileAvatar.style.backgroundColor = "#ffcc00";
+    }
+    if (profileName) {
+      profileName.innerText = user.name;
+    }
+    if (logoutBtn) {
+      logoutBtn.style.display = "flex";
+    }
+    if (proLink) {
+      proLink.style.display = "inline";
+    }
+  } else {
+    // Guest state
+    if (topUserName) {
+      topUserName.innerText = "Sign In";
+    }
+    if (topUserMenu) {
+      topUserMenu.href = "/login.html";
+    }
+    if (userNavContainer) {
+      userNavContainer.classList.remove('logged-in');
+    }
+    if (profileAvatar) {
+      profileAvatar.innerText = "?";
+      profileAvatar.style.backgroundColor = "#ccc";
+    }
+    if (profileName) {
+      profileName.innerText = "Guest User";
+    }
+    if (logoutBtn) {
+      logoutBtn.style.display = "none";
+    }
+    if (proLink) {
+      proLink.style.display = "none"; // Option to hide upgrade link for guests
+    }
+  }
+
+  // Logout Logic
+  const handleLogout = (e) => {
+    if (e) e.preventDefault();
+    sessionStorage.removeItem("tezmart_current_user");
+    window.location.reload(); // Reload instead of redirecting
+  };
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", handleLogout);
+  }
+
+  if (topLogoutBtn) {
+    topLogoutBtn.addEventListener("click", handleLogout);
+  }
 
   const products = [
     {

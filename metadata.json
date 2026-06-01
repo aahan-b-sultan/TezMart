@@ -1,6 +1,0 @@
-{
-  "name": "B2B Marketplace Dashboard",
-  "description": "A responsive B2B dashboard focusing on HTML, CSS, and JS. Built without modern UI frameworks as requested.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Sign Up - TezMart</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/auth.css">
+  <link rel="icon" href="/favicon.jpeg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/favicon.jpeg">
+</head>
+<body class="auth-body">
+  <div class="auth-container">
+    <div class="auth-header">
+      <img src="/logo.jpeg" alt="TezMart logo" class="auth-logo">
+      <h2>TezMart</h2>
+    </div>
+    
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tab-login">Login</button>
+      <button class="auth-tab" id="tab-signup">Sign Up</button>
+    </div>
+
+    <div class="auth-forms-wrapper">
+      <!-- Login Form -->
+      <form id="form-login" class="auth-form active">
+        <h3>Welcome Back</h3>
+        <div class="input-group">
+          <label>Email ID</label>
+          <input type="email" id="login-email" required placeholder="Enter your email">
+        </div>
+        <div class="input-group">
+          <label>Password</label>
+          <input type="password" id="login-password" required placeholder="Enter your password">
+        </div>
+        <button type="submit" class="auth-btn">Sign In</button>
+        <p class="auth-error" id="login-error"></p>
+      </form>
+
+      <!-- Sign Up Form -->
+      <form id="form-signup" class="auth-form">
+        <h3>Create an Account</h3>
+        <div class="input-group">
+          <label>Mobile Number</label>
+          <div class="phone-input">
+            <span class="phone-prefix">
+               <img src="https://flagcdn.com/w20/in.png" alt="India Flag" style="width: 18px; margin-right: 6px;"> +91
+            </span>
+            <input type="tel" id="signup-phone" required placeholder="Enter Mobile Number" pattern="[0-9]{10}">
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Email ID</label>
+          <input type="email" id="signup-email" required placeholder="Enter your email">
+        </div>
+        <div class="input-group">
+          <label>Password</label>
+          <input type="password" id="signup-password" required placeholder="Create a password">
+        </div>
+        <button type="submit" class="auth-btn">Register completely</button>
+        <p class="auth-error" id="signup-error"></p>
+      </form>
+    </div>
+  </div>
+  <script src="/auth.js"></script>
+</body>
+</html>
