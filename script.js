@@ -81,49 +81,66 @@ document.addEventListener("DOMContentLoaded", () => {
     topLogoutBtn.addEventListener("click", handleLogout);
   }
 
-  const products = [
+  const services = [
     {
-      price: "₹22",
-      title: "Pt100 Temperature Sensor Cable",
-      company: "Thermo Sensors",
-      image: "https://placehold.co/400x300/e2e8f0/475569?text=Sensor+Cable"
+      title: "Website Development",
+      description: "Custom responsive websites for your brand",
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=400&h=300"
     },
     {
-      price: "₹450",
-      title: "PT100 RTD Temperature Sensor",
-      company: "Central Controls & Engineering Services",
-      image: "https://placehold.co/400x300/e2e8f0/475569?text=RTD+Sensor"
+      title: "Mobile App Development",
+      description: "Native and cross-platform mobile apps",
+      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=400&h=300"
     },
     {
-      price: "₹500",
-      title: "PT100 Temperature Sensor",
-      company: "Premier Electricals",
-      image: "https://placehold.co/400x300/e2e8f0/475569?text=Temp+Sensor"
+      title: "Graphics Designing",
+      description: "Professional logos, banners, and digital assets",
+      image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=400&h=300"
     },
     {
-      price: "₹800",
-      title: "Class B Stainless Steel RTD Pt100 Sensor",
-      company: "A. V. Engineers",
-      image: "https://placehold.co/400x300/e2e8f0/475569?text=Steel+Sensor"
+      title: "Animated Videos",
+      description: "Engaging 2D/3D explainer and promo videos",
+      image: "https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?auto=format&fit=crop&q=80&w=400&h=300"
+    },
+    {
+      title: "Email Marketing",
+      description: "Targeted campaigns and newsletter management",
+      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=400&h=300"
+    },
+    {
+      title: "Whatsapp Marketing",
+      description: "Bulk messaging and automation services",
+      image: "https://images.unsplash.com/photo-1636751364472-12bfad09b451?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&fit=crop&q=80&w=400&h=300"
+    },
+    {
+      title: "Digital Marketing",
+      description: "SEO, SEM, and social media growth strategies",
+      image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      title: "SMS Marketing",
+      description: "High-conversion promotional SMS campaigns",
+      image: "https://images.unsplash.com/photo-1776797391265-01a0490d4c99?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&fit=crop&q=80&w=400&h=300"
+    },
+    {
+      title: "Software Development",
+      description: "Custom business software and CRM solutions",
+      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=400&h=300"
     }
   ];
 
   if (productsGrid) {
-    productsGrid.innerHTML = products.map(product => `
+    productsGrid.innerHTML = services.map(service => `
       <div class="product-card">
-        <div class="product-price">${product.price}</div>
-        <button class="favorite-btn">
-          <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-        </button>
         <div class="product-img-container">
-          <img src="${product.image}" alt="${product.title}" class="product-img">
+          <img src="${service.image}" alt="${service.title}" class="product-img">
         </div>
         <div class="product-info">
-          <h3 class="product-title">${product.title}</h3>
-          <p class="product-company">${product.company}</p>
+          <h3 class="product-title">${service.title}</h3>
+          <p class="product-company" style="margin-bottom: 12px; font-size: 0.9rem; white-space: normal;">${service.description}</p>
           <button class="contact-btn">
             <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-            Contact
+            Inquire Now
           </button>
         </div>
       </div>
