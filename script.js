@@ -129,8 +129,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   ];
 
-  if (productsGrid) {
-    productsGrid.innerHTML = services.map(service => `
+  const searchInput = document.querySelector('.search-input');
+
+  const renderServices = (filterText = '') => {
+    if (!productsGrid) return;
+    
+    const filteredServices = services.filter(service => 
+      service.title.toLowerCase().includes(filterText.toLowerCase()) || 
+      service.description.toLowerCase().includes(filterText.toLowerCase())
+    );
+    
+    productsGrid.innerHTML = filteredServices.map(service => `
       <div class="product-card">
         <div class="product-img-container">
           <img src="${service.image}" alt="${service.title}" class="product-img">
@@ -145,5 +154,19 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </div>
     `).join('');
+
+    if (filteredServices.length === 0) {
+      productsGrid.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #6b7280; font-size: 1.1rem;">No services found matching your search.</div>';
+    }
+  };
+
+  if (productsGrid) {
+    renderServices();
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      renderServices(e.target.value);
+    });
   }
 });
