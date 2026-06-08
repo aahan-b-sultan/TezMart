@@ -5,14 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TezMart</title>
   <link rel="stylesheet" href="/style.css">
-  <link rel="icon" href="/favicon.jpeg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/favicon.jpeg">
+  <link rel="icon" href="/favicon.png" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/favicon.png">
 </head>
 <body>
   <!-- Header -->
   <header class="top-header">
     <div class="logo">
-      <img src="/logo.jpeg" alt="TezMart logo" class="logo-image">
+      <div class="logo-wrapper">
+        <div class="logo-wrapper"><img src="/logo.jpeg" alt="TezMart logo" class="logo-image"></div>
+      </div>
       <span class="logo-text">TezMart</span>
     </div>
     <nav class="top-nav">
@@ -82,24 +84,63 @@
     <!-- Main Content -->
     <main class="main-content">
       <!-- Search Bar section -->
-      <div class="search-bar-container">
-        <div class="search-box">
+      <div class="search-bar-container" style="background-color: #fff; padding: 15px; border-radius: 8px; border: 1px solid var(--border-color);">
+        <div class="search-box" style="border: 2px solid var(--primary-color);">
           <div class="location-select">
              <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
              <select>
+               <option>All India</option>
                <option>Nagpur</option>
                <option>Mumbai</option>
                <option>Delhi</option>
              </select>
           </div>
-          <input type="text" class="search-input" placeholder="Enter product / service">
+          <input type="text" class="search-input" placeholder="Enter product / service to search">
           <button class="btn-search">Search</button>
         </div>
-        <button class="btn-post-rfq" onclick="window.location.href='/post-requirement.html'">Post Requirement</button>
+        <button class="btn-post-rfq auth-required" onclick="window.location.href='/post-requirement.html'">Post Requirement</button>
       </div>
 
-      <!-- Dashboard Cards -->
-      <div class="dashboard-cards">
+      <!-- Hero Banner (Shows for Guests and basic layout) -->
+      <div class="hero-banners" id="hero-banners" style="display: flex; gap: 20px; align-items: stretch; margin-top: 10px;">
+        <div class="hero-left" style="flex: 1; background-color: var(--white); padding: 40px; border-radius: 8px; border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: center;">
+          <h1 style="font-size: 2.2rem; color: var(--text-dark); margin-bottom: 15px; line-height: 1.2;">We connect<br>Buyers & Sellers</h1>
+          <p style="color: var(--text-dark); font-size: 1rem; margin-bottom: 30px;">TezMart is your premier online B2B marketplace, connecting buyers with reliable suppliers across IT, marketing, and design sectors.</p>
+          <div class="hero-features" style="display: flex; gap: 30px;">
+            <div style="text-align: center;">
+              <div style="width: 50px; height: 50px; background-color: #f0f7f7; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;">
+                <svg width="24" height="24" fill="none" stroke="var(--primary-color)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              </div>
+              <span style="font-size: 0.85rem; font-weight: 500;">Trusted<br>Platform</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="width: 50px; height: 50px; background-color: #f0f7f7; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;">
+                <svg width="24" height="24" fill="none" stroke="var(--primary-color)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+              </div>
+              <span style="font-size: 0.85rem; font-weight: 500;">Safe &<br>Secure</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="width: 50px; height: 50px; background-color: #f0f7f7; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;">
+                <svg width="24" height="24" fill="none" stroke="var(--primary-color)" stroke-width="2" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+              </div>
+              <span style="font-size: 0.85rem; font-weight: 500;">Quick<br>Assistance</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-right" style="flex: 2; border-radius: 8px; overflow: hidden; position: relative;">
+          <img src="https://images.unsplash.com/photo-1542744173-05336fcc7ad4?auto=format&fit=crop&q=80&w=1200&h=400" alt="Banner" style="width: 100%; height: 100%; object-fit: cover;">
+          <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,64,61,0.9), transparent); display: flex; align-items: center; padding: 40px;">
+             <div style="color: white; max-width: 400px;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 15px; line-height: 1.1;">Grow Your<br><span style="color: var(--secondary-color);">Business With Us</span></h2>
+                <p style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 20px;">Find top-rated IT services, professional designing, and result-driven marketing tools.</p>
+                <button class="btn-primary auth-required" onclick="window.location.href='/post-requirement.html'" style="display: inline-flex;">Post Your Requirement</button>
+             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dashboard Cards (Hidden by default, shown when logged in) -->
+      <div class="dashboard-cards" id="dashboard-cards" style="display: none;">
         <div class="card active-order-card">
           <div class="card-header">
             <h2>Recent Requirements</h2>
@@ -112,7 +153,7 @@
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
             </div>
             <p>No requirements posted yet. Post one to receive quotations</p>
-            <button class="btn-primary" onclick="window.location.href='/post-requirement.html'">
+            <button class="btn-primary auth-required" onclick="window.location.href='/post-requirement.html'">
                <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
                Post a Requirement
             </button>
@@ -137,10 +178,14 @@
         </div>
       </div>
 
-      <div class="products-section">
-        <h2>Our Services</h2>
+      <div class="products-section categorised-view" id="categorised-products-wrapper">
+        <!-- Categories injected via JS -->
+      </div>
+      
+      <div class="products-section search-view" id="search-products-wrapper" style="display: none;">
+        <h2>Search Results</h2>
         <div class="products-grid" id="products-grid">
-          <!-- Products injected via JS -->
+          <!-- Search results injected via JS -->
         </div>
       </div>
     </main>
@@ -150,7 +195,9 @@
     <div class="footer-layout">
       <div class="footer-brand">
         <div class="footer-logo-row">
-          <img src="/logo.jpeg" alt="TezMart logo" class="footer-logo-square">
+          <div class="footer-logo-wrapper">
+            <div class="footer-logo-wrapper"><img src="/logo.jpeg" alt="TezMart logo" class="footer-logo-square"></div>
+          </div>
           <h2 style="color: #ffffff;">TezMart</h2>
         </div>
         <p class="footer-tagline">One Complete Solution For Your Brand</p>

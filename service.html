@@ -72,12 +72,28 @@
       gap: 15px;
       margin-bottom: 15px;
     }
-    .seller-logo {
+    .seller-logo-wrapper {
       width: 50px;
       height: 50px;
-      border-radius: 5px;
+      border-radius: 50%;
       border: 1px solid #e2e8f0;
-      object-fit: contain;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background-color: #fff;
+    }
+    .seller-logo {
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      border: none;
+      object-fit: cover;
+      transform: scale(1.3) translateY(-4%);
+      background-color: transparent;
+      padding: 0;
+      box-sizing: border-box;
     }
     .seller-name {
       font-size: 1.1rem;
@@ -226,7 +242,7 @@
   <!-- Header -->
   <header class="top-header">
     <div class="logo" onclick="window.location.href='/index.html'" style="cursor:pointer">
-      <img src="/logo.jpeg" alt="TezMart logo" class="logo-image">
+      <div class="logo-wrapper"><img src="/logo.jpeg" alt="TezMart logo" class="logo-image"></div>
       <span class="logo-text">TezMart</span>
     </div>
     <nav class="top-nav">
@@ -272,7 +288,7 @@
         </div>
         <div class="seller-box">
           <div class="seller-header">
-            <img src="/logo.jpeg" alt="TezMart" class="seller-logo">
+            <div class="seller-logo-wrapper"><img src="/logo.jpeg" alt="TezMart" class="seller-logo"></div>
             <div>
               <div class="seller-name">TezMart Solutions</div>
               <div class="trust-seal">✓ TrustSEAL Verified</div>
@@ -322,7 +338,7 @@
         </div>
         <div class="seller-box">
           <div class="seller-header">
-            <img src="/logo.jpeg" alt="TezMart" class="seller-logo">
+            <div class="seller-logo-wrapper"><img src="/logo.jpeg" alt="TezMart" class="seller-logo"></div>
             <div>
               <div class="seller-name">TezMart Solutions</div>
               <div class="trust-seal">✓ TrustSEAL Verified</div>
@@ -372,7 +388,7 @@
         </div>
         <div class="seller-box">
           <div class="seller-header">
-            <img src="/logo.jpeg" alt="TezMart" class="seller-logo">
+            <div class="seller-logo-wrapper"><img src="/logo.jpeg" alt="TezMart" class="seller-logo"></div>
             <div>
               <div class="seller-name">TezMart Solutions</div>
               <div class="trust-seal">✓ TrustSEAL Verified</div>
@@ -422,7 +438,7 @@
         </div>
         <div class="seller-box">
           <div class="seller-header">
-            <img src="/logo.jpeg" alt="TezMart" class="seller-logo">
+            <div class="seller-logo-wrapper"><img src="/logo.jpeg" alt="TezMart" class="seller-logo"></div>
             <div>
               <div class="seller-name">TezMart Solutions</div>
               <div class="trust-seal">✓ TrustSEAL Verified</div>
@@ -472,7 +488,7 @@
         </div>
         <div class="seller-box">
           <div class="seller-header">
-            <img src="/logo.jpeg" alt="TezMart" class="seller-logo">
+            <div class="seller-logo-wrapper"><img src="/logo.jpeg" alt="TezMart" class="seller-logo"></div>
             <div>
               <div class="seller-name">TezMart Solutions</div>
               <div class="trust-seal">✓ TrustSEAL Verified</div>
@@ -522,7 +538,7 @@
         </div>
         <div class="seller-box">
           <div class="seller-header">
-            <img src="/logo.jpeg" alt="TezMart" class="seller-logo">
+            <div class="seller-logo-wrapper"><img src="/logo.jpeg" alt="TezMart" class="seller-logo"></div>
             <div>
               <div class="seller-name">TezMart Solutions</div>
               <div class="trust-seal">✓ TrustSEAL Verified</div>
@@ -572,7 +588,7 @@
         </div>
         <div class="seller-box">
           <div class="seller-header">
-            <img src="/logo.jpeg" alt="TezMart" class="seller-logo">
+            <div class="seller-logo-wrapper"><img src="/logo.jpeg" alt="TezMart" class="seller-logo"></div>
             <div>
               <div class="seller-name">TezMart Solutions</div>
               <div class="trust-seal">✓ TrustSEAL Verified</div>
@@ -622,7 +638,7 @@
         </div>
         <div class="seller-box">
           <div class="seller-header">
-            <img src="/logo.jpeg" alt="TezMart" class="seller-logo">
+            <div class="seller-logo-wrapper"><img src="/logo.jpeg" alt="TezMart" class="seller-logo"></div>
             <div>
               <div class="seller-name">TezMart Solutions</div>
               <div class="trust-seal">✓ TrustSEAL Verified</div>
@@ -672,7 +688,7 @@
         </div>
         <div class="seller-box">
           <div class="seller-header">
-            <img src="/logo.jpeg" alt="TezMart" class="seller-logo">
+            <div class="seller-logo-wrapper"><img src="/logo.jpeg" alt="TezMart" class="seller-logo"></div>
             <div>
               <div class="seller-name">TezMart Solutions</div>
               <div class="trust-seal">✓ TrustSEAL Verified</div>
@@ -720,7 +736,7 @@
     <div class="footer-layout">
       <div class="footer-brand">
         <div class="footer-logo-row">
-          <img src="/logo.jpeg" alt="TezMart logo" class="footer-logo-square">
+          <div class="footer-logo-wrapper"><img src="/logo.jpeg" alt="TezMart logo" class="footer-logo-square"></div>
           <h2 style="color: #ffffff;">TezMart</h2>
         </div>
         <p class="footer-tagline">One Complete Solution For Your Brand</p>
