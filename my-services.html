@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Requirements - TezMart</title>
+  <title>My Services - TezMart</title>
   <script>
     if (!sessionStorage.getItem("tezmart_current_user")) {
       window.location.replace("/login.html");
@@ -156,22 +156,32 @@
       <ul class="sidebar-menu">
         <li><a href="/index.html"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg> Dashboard</a></li>
         <li><a href="/post-requirement.html"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg> Post Requirement</a></li>
-        <li class="active"><a href="/my-requirements.html"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg> My Requirements</a></li>
+        <li><a href="/my-requirements.html"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg> My Requirements</a></li>
         <li><a href="/profile.html"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> My Profile</a></li>
-        <li><a href="/my-services.html"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg> My Services</a></li>
+        <li class="active"><a href="/my-services.html"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg> My Services</a></li>
       </ul>
     </aside>
 
     <!-- Main Content -->
     <main class="main-content" style="background-color: var(--bg-color);">
-      <div class="req-list-container">
-        <h1 class="req-list-title">My Requirements</h1>
-        
-        <div id="req-list-wrapper">
-          <!-- Populated by JS -->
-        </div>
+      
+    <div class="req-list-container" style="display: flex; flex-direction: column; width: 100%;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2 class="req-list-title" style="margin-bottom: 0;">My Published Services</h2>
+        <button type="button" onclick="window.location.href='/seller-registration.html'" style="background-color: #0d9488; color: white; border: none; padding: 10px 18px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: background-color 0.2s;">
+          + Add New Service
+        </button>
       </div>
-    </main>
+      <div id="my-services-list">
+         <!-- dynamic content populated via js, fallback text if not present -->
+         <div class="empty-state" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 40px;">
+           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 64px; height: 64px; color: #cbd5e1; margin-bottom: 20px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+           <h3 style="font-size: 1.25rem; font-weight: 600; color: #334155; margin-bottom: 10px;">No Services Published</h3>
+           <p style="color: #64748b; font-size: 1rem; text-align: center; max-width: 400px;">You haven't listed any services yet. Start selling on TezMart today.</p>
+         </div>
+      </div>
+    </div>
+  </main>
   </div>
 
   <footer class="site-footer">
@@ -230,68 +240,7 @@
   </footer>
 
   <script src="/script.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Setup profile
-      const profileData = JSON.parse(localStorage.getItem('tezmartProfile') || '{}');
-      if (profileData.firstName) {
-        document.querySelector('.avatar').textContent = profileData.firstName.charAt(0).toUpperCase();
-        document.querySelector('.user-info h3').textContent = `${profileData.firstName} ${profileData.lastName || ''}`;
-      }
-
-      // Load requirements
-      const reqs = JSON.parse(localStorage.getItem('tezmartRequirements') || '[]');
-      const wrapper = document.getElementById('req-list-wrapper');
-
-      if (reqs.length === 0) {
-        wrapper.innerHTML = `
-          <div class="empty-state">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-            <h3>No Requirements Posted</h3>
-            <p>You haven't posted any service requirements yet.</p>
-            <button class="btn-primary-teal" onclick="window.location.href='/post-requirement.html'" style="padding: 12px 24px; font-size: 1rem;">Post Now</button>
-          </div>
-        `;
-        return;
-      }
-
-      const formatTime = (ms) => {
-        const d = new Date(ms);
-        return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
-      };
-
-      wrapper.innerHTML = reqs.map(r => `
-        <div class="req-card">
-          <div class="req-header">
-            <div>
-              <div class="req-title">${r.service}</div>
-              <div class="req-date">Posted on ${formatTime(r.dateMs)}</div>
-            </div>
-            <div class="req-status">${r.status || 'Active'}</div>
-          </div>
-          <div class="req-meta">
-            ${r.budget ? `
-            <div class="meta-item">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-              ${r.budget}
-            </div>` : ''}
-            ${r.quantity ? `
-            <div class="meta-item">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
-              ${r.quantity} ${r.unit}
-            </div>` : ''}
-            ${r.deadline ? `
-            <div class="meta-item">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-              Delivery: ${r.deadline}
-            </div>` : ''}
-          </div>
-          <div class="req-desc">
-            ${r.details.replace(/\n/g, '<br>')}
-          </div>
-        </div>
-      `).join('');
-    });
-  </script>
+  
+  <script src="/my-services.js"></script>
 </body>
 </html>

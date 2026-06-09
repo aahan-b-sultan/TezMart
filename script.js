@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const sidebar = document.querySelector('.sidebar');
   const isPostReqPage = window.location.pathname.includes('post-requirement.html');
   const isProfilePage = window.location.pathname.includes('profile.html');
+  const isSellerRegPage = window.location.pathname.includes('seller-registration.html');
+  const isMyServicesPage = window.location.pathname.includes('my-services.html');
 
   if (currentUserStr) {
     const user = JSON.parse(currentUserStr);
@@ -55,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     // Guest state
     // Protect routes
-    if (isPostReqPage || isProfilePage) {
+    if (isPostReqPage || isProfilePage || isSellerRegPage || isMyServicesPage) {
       window.location.href = "/login.html";
       return;
     }
@@ -329,13 +331,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // Auth requirement for buttons
   document.addEventListener("click", (e) => {
     // Find closest protected element
-    const target = e.target.closest('.auth-required, [onclick*="post-requirement"], [href*="post-requirement"], .btn-solid, .submit-req-btn');
+    const target = e.target.closest('.auth-required, [onclick*="post-requirement"], [href*="post-requirement"], [href*="seller-registration"], [href*="my-services"], .btn-solid, .submit-req-btn');
     if (target) {
       const currentUserStr = sessionStorage.getItem("tezmart_current_user");
       if (!currentUserStr) {
         e.preventDefault();
         e.stopPropagation();
-        alert("You must be logged in to perform this action.");
         window.location.href = "/login.html";
       }
     }
