@@ -6,7 +6,7 @@
   <title>Seller Registration - TezMart</title>
   <script>
     if (!sessionStorage.getItem("tezmart_current_user")) {
-      window.location.replace("/login.html");
+      window.location.replace("/sell-landing.html");
     }
   </script>
   <link rel="stylesheet" href="/style.css">
@@ -342,47 +342,36 @@
       <!-- STEP 1: BUSINESS -->
       <div class="form-step active" id="step-1">
         <h2 class="registration-title">Start Selling on TezMart</h2>
-        <p class="registration-subtitle">Provide your Business details</p>
+        <p class="registration-subtitle">Enter your company details to help buyers understand your business.</p>
 
-        <div class="toggle-group">
-          <div class="toggle-option active" id="toggle-gstin" onclick="selectDocType('gstin')">
-            <div class="toggle-option-left">
-              <div>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-              </div>
-              <div>
-                <h4>I have GSTIN</h4>
-                <p>Auto-verify & fill details</p>
-              </div>
-            </div>
-            <div class="radio-circle"></div>
+        <div class="product-form-grid">
+          <div class="form-group full-width">
+            <label>Company/Business Name *</label>
+            <input type="text" id="company-name" placeholder="e.g., Acme Corp, Best Design Agency..." required>
           </div>
           
-          <div class="toggle-option" id="toggle-pan" onclick="selectDocType('pan')">
-            <div class="toggle-option-left">
-              <div>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-              </div>
-              <div>
-                <h4>GST Exempt</h4>
-                <p>Use PAN to register</p>
-              </div>
-            </div>
-            <div class="radio-circle"></div>
+          <div class="form-group full-width">
+            <label>Why should buyers choose your company? *</label>
+            <textarea id="company-usp" rows="5" placeholder="Tell potential buyers what makes your business unique, your experience, and why they should pick you over others..." required></textarea>
           </div>
-        </div>
-
-        <div class="input-row">
+          
           <div class="form-group">
-            <label id="doc-label" style="font-size: 0.8rem; text-transform: uppercase; margin-bottom: 5px; color: #64748b;">GSTIN Number *</label>
-            <input type="text" id="doc-input" placeholder="15-DIGIT GSTIN" oninput="checkInput()">
+            <label>Year Established</label>
+            <input type="number" id="company-year" placeholder="e.g., 2010">
           </div>
-          <button class="btn-fetch" id="btn-fetch" onclick="fetchDetails()">Fetch Details →</button>
+          
+          <div class="form-group">
+            <label>Business Type</label>
+            <select id="company-type">
+              <option value="Manufacturer">Manufacturer</option>
+              <option value="Wholesaler">Wholesaler</option>
+              <option value="Retailer">Retailer</option>
+              <option value="Service Provider">Service Provider</option>
+            </select>
+          </div>
         </div>
-        
-        <p id="doc-hint" style="font-size: 0.8rem; color: #94a3b8; margin-top: -10px; margin-bottom: 25px;"></p>
 
-        <button class="btn-continue" id="btn-step-1" onclick="nextStep(2)">Continue to Add Services →</button>
+        <button class="btn-continue active" id="btn-step-1" style="margin-top: 30px;" onclick="nextStep(2)">Continue to Add Services →</button>
       </div>
 
       <!-- STEP 2: SERVICES (Products) -->
@@ -446,74 +435,14 @@
   </div>
 
   <script>
-    let currentDocType = 'gstin';
-
-    function selectDocType(type) {
-      currentDocType = type;
-      
-      // Update toggles
-      document.getElementById('toggle-gstin').classList.remove('active');
-      document.getElementById('toggle-pan').classList.remove('active');
-      document.getElementById('toggle-' + type).classList.add('active');
-
-      // Update inputs
-      const label = document.getElementById('doc-label');
-      const input = document.getElementById('doc-input');
-      const hint = document.getElementById('doc-hint');
-      const btn = document.getElementById('btn-fetch');
-
-      input.value = '';
-      checkInput();
-
-      if (type === 'gstin') {
-        label.innerText = 'GSTIN Number *';
-        input.placeholder = '15-DIGIT GSTIN';
-        hint.innerText = '';
-        btn.innerText = 'Fetch Details →';
-      } else {
-        label.innerText = 'PAN Number *';
-        input.placeholder = '10-DIGIT PAN (e.g. ABCDE1234F)';
-        hint.innerText = '10 characters — used for identity verification';
-        btn.innerText = 'Submit PAN →';
-      }
-    }
-
-    function checkInput() {
-      const val = document.getElementById('doc-input').value.trim();
-      const btnFetch = document.getElementById('btn-fetch');
-      const btnContinue = document.getElementById('btn-step-1');
-      
-      let isValid = false;
-      if (currentDocType === 'gstin' && val.length >= 15) {
-        isValid = true;
-      } else if (currentDocType === 'pan' && val.length >= 10) {
-        isValid = true;
-      }
-      
-      if (isValid) {
-        btnFetch.classList.add('active');
-        btnContinue.classList.add('active');
-      } else {
-        btnFetch.classList.remove('active');
-        btnContinue.classList.remove('active');
-      }
-    }
-
-    function fetchDetails() {
-      const btnFetch = document.getElementById('btn-fetch');
-      if (!btnFetch.classList.contains('active')) return;
-      
-      btnFetch.innerText = 'Verified ✓';
-      btnFetch.style.backgroundColor = '#10b981'; /* green */
-      btnFetch.style.color = 'white';
-    }
-
     function nextStep(step) {
       if (step === 2) {
         // Validation for step 1
-        const btnContinue = document.getElementById('btn-step-1');
-        if (!btnContinue.classList.contains('active')) {
-          alert('Please enter a valid GSTIN or PAN.');
+        const companyName = document.getElementById('company-name').value.trim();
+        const companyUsp = document.getElementById('company-usp').value.trim();
+        
+        if (!companyName || !companyUsp) {
+          alert('Please enter your Company/Business Name and describe why buyers should choose you.');
           return;
         }
       }

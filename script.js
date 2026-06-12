@@ -57,8 +57,13 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     // Guest state
     // Protect routes
-    if (isPostReqPage || isProfilePage || isSellerRegPage || isMyServicesPage) {
+    if (isPostReqPage || isProfilePage || isMyServicesPage) {
       window.location.href = "/login.html";
+      return;
+    }
+    
+    if (isSellerRegPage) {
+      window.location.href = "/sell-landing.html";
       return;
     }
 
@@ -337,7 +342,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!currentUserStr) {
         e.preventDefault();
         e.stopPropagation();
-        window.location.href = "/login.html";
+        
+        const href = target.getAttribute('href');
+        if (href && href.includes('seller-registration')) {
+          window.location.href = "/sell-landing.html";
+        } else {
+          window.location.href = "/login.html";
+        }
       }
     }
   }, true);
